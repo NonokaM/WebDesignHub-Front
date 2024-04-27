@@ -10,7 +10,6 @@ import { useSession } from "next-auth/react";
 const LoginPage = () => {
   const { data: session, status } = useSession();
   useEffect(() => {
-    // ログイン済みの場合はTOPページにリダイレクト
     if (status === "authenticated") {
       redirect("/");
     }
@@ -20,7 +19,6 @@ const LoginPage = () => {
     event.preventDefault();
     const result = await signIn(provider);
 
-    // ログインに成功したらTOPページにリダイレクト
     if (result) {
       redirect("/");
     }
